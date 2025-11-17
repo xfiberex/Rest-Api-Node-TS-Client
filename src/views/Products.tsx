@@ -25,7 +25,7 @@ export default function Products() {
 
             <div className="overflow-x-auto rounded-lg border border-slate-200 shadow-md">
                 <table className="w-full table-auto">
-                    <thead className="bg-gradient-to-r from-slate-800 to-slate-900 text-white">
+                    <thead className="bg-linear-to-r from-slate-800 to-slate-900 text-white">
                         <tr>
                             <th className="p-4 text-left font-semibold">Producto</th>
                             <th className="p-4 text-left font-semibold">Precio</th>

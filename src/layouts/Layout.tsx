@@ -3,7 +3,7 @@ import { Outlet } from "react-router-dom"
 export default function Layout() {
     return (
         <>
-            <header className="bg-gradient-to-r from-slate-800 to-slate-900 shadow-lg">
+            <header className="bg-linear-to-r from-slate-800 to-slate-900 shadow-lg">
                 <div className="mx-auto max-w-6xl py-10 px-4">
                     <h1 className="text-4xl font-extrabold text-white">
                         📦 Administrador de Productos
