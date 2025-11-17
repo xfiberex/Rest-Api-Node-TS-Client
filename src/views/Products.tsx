@@ -7,33 +7,36 @@ export default function Products() {
 
     return (
         <>
-            <div className="flex justify-between">
-                <h2 className="text-2xl font-black text-slate-500">
-                    Productos
-                </h2>
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
+                <div>
+                    <h2 className="text-3xl font-black text-slate-800">
+                        Productos
+                    </h2>
+                    <p className="text-slate-600 mt-1">Lista completa de productos en inventario</p>
+                </div>
 
                 <Link
-                    to={"productos/nuevo"}
-                    className="rounded-md bg-indigo-600 p-3 text-sm font-bold text-white shadow-md hover:bg-indigo-500"
+                    to="productos/nuevo"
+                    className="rounded-lg bg-indigo-600 px-6 py-3 text-sm font-bold text-white shadow-lg hover:bg-indigo-700 transition-colors duration-200 hover:shadow-xl"
                 >
-                    Agregar Producto
+                    ➕ Agregar Producto
                 </Link>
             </div>
 
-            <div className="p-2">
-                <table className="w-full mt-5 table-auto">
-                    <thead className="bg-slate-800 text-white">
+            <div className="overflow-x-auto rounded-lg border border-slate-200 shadow-md">
+                <table className="w-full table-auto">
+                    <thead className="bg-gradient-to-r from-slate-800 to-slate-900 text-white">
                         <tr>
-                            <th className="p-2">Producto</th>
-                            <th className="p-2">Precio</th>
-                            <th className="p-2">Disponibilidad</th>
-                            <th className="p-2">Acciones</th>
+                            <th className="p-4 text-left font-semibold">Producto</th>
+                            <th className="p-4 text-left font-semibold">Precio</th>
+                            <th className="p-4 text-center font-semibold">Disponibilidad</th>
+                            <th className="p-4 text-center font-semibold">Acciones</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody className="divide-y divide-slate-200">
                         {products.map(product => (
                             <ProductDetails
-                            key={product.id}
+                                key={product.id}
                                 product={product}
                             />
                         ))}

@@ -1,5 +1,6 @@
 import { Link, Form, useActionData } from "react-router-dom";
 import ErrorMessage from "../components/ErrorMessage";
+import ProductForm from "../components/ProductForm";
 
 export default function NewProducts() {
 
@@ -7,59 +8,31 @@ export default function NewProducts() {
 
     return (
         <>
-            <div className="flex justify-between">
-                <h2 className="text-2xl font-black text-slate-500">
-                    Registrar Producto
-                </h2>
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
+                <div>
+                    <h2 className="text-3xl font-black text-slate-800">
+                        Registrar Producto
+                    </h2>
+                    <p className="text-slate-600 mt-1">Agrega un nuevo producto al inventario</p>
+                </div>
 
                 <Link
                     to={"/"}
-                    className="rounded-md bg-indigo-600 p-3 text-sm font-bold text-white shadow-md hover:bg-indigo-500"
+                    className="rounded-lg bg-slate-600 hover:bg-slate-700 px-6 py-3 text-sm font-bold text-white shadow-lg transition-colors duration-200 hover:shadow-xl"
                 >
-                    Volver a Productos
+                    ← Volver a Productos
                 </Link>
             </div>
 
             {error && <ErrorMessage>{error}</ErrorMessage>}
 
-            <Form
-                className="mt-10"
-                method="POST"
-            >
-                <div className="mb-4">
-                    <label
-                        className="text-gray-800 pl-3"
-                        htmlFor="name"
-                    >Nombre Producto:</label>
-
-                    <input
-                        id="name"
-                        type="text"
-                        className="mt-2 block w-full p-3 bg-gray-50 rounded-md"
-                        placeholder="Nombre del Producto"
-                        name="name"
-                    />
-                </div>
-
-                <div className="mb-4">
-                    <label
-                        className="text-gray-800 pl-3"
-                        htmlFor="price"
-                    >Precio:</label>
-
-                    <input
-                        id="price"
-                        type="number"
-                        className="mt-2 block w-full p-3 bg-gray-50 rounded-md"
-                        placeholder="Precio Producto. ej. 200, 300"
-                        name="price"
-                    />
-                </div>
+            <Form className="mt-8 bg-slate-50 p-8 rounded-xl border border-slate-200 shadow-md" method="POST">
+                <ProductForm  />
 
                 <input
                     type="submit"
-                    className="mt-5 w-full bg-indigo-600 p-2 text-white font-bold text-lg cursor-pointer rounded-md"
-                    value="Registrar"
+                    className="mt-8 w-full bg-indigo-600 hover:bg-indigo-700 py-4 text-white font-bold text-lg cursor-pointer rounded-lg shadow-lg hover:shadow-xl transition-all duration-200"
+                    value="💾 Registrar Producto"
                 />
             </Form>
         </>
