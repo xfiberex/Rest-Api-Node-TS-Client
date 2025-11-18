@@ -13,7 +13,7 @@ export async function editProductAction({ request, params }: ActionFunctionArgs)
 
     try {
         await updateProduct(+params.id!, data);
-        return redirect("/");
+        return redirect("/?toast=updated");
     } catch (err) {
         console.error("Error al actualizar producto:", err);
         return "Hubo un error al actualizar el producto";

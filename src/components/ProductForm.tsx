@@ -1,3 +1,4 @@
+import { useNavigation } from "react-router-dom"
 import type { Product } from "../types"
 
 type ProductFormPropsType = {
@@ -5,6 +6,9 @@ type ProductFormPropsType = {
 }
 
 export default function ProductForm({ product }: ProductFormPropsType) {
+    const navigation = useNavigation();
+    const isSubmitting = navigation.state === "submitting";
+
     return (
         <>
             <div className="mb-6">
@@ -16,10 +20,12 @@ export default function ProductForm({ product }: ProductFormPropsType) {
                 <input
                     id="name"
                     type="text"
-                    className="mt-1 block w-full px-4 py-3 bg-slate-50 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all"
+                    className="mt-1 block w-full px-4 py-3 bg-slate-50 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all disabled:opacity-60 disabled:cursor-not-allowed"
                     placeholder="Ej: Laptop Dell, Mouse Inalámbrico"
                     name="name"
                     defaultValue={product?.name}
+                    disabled={isSubmitting}
+                    required
                 />
             </div>
 
@@ -32,12 +38,14 @@ export default function ProductForm({ product }: ProductFormPropsType) {
                 <input
                     id="price"
                     type="number"
-                    className="mt-1 block w-full px-4 py-3 bg-slate-50 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all"
+                    className="mt-1 block w-full px-4 py-3 bg-slate-50 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all disabled:opacity-60 disabled:cursor-not-allowed"
                     placeholder="Ej: 299.99"
                     name="price"
                     defaultValue={product?.price}
                     step="0.01"
                     min="0"
+                    disabled={isSubmitting}
+                    required
                 />
             </div>
         </>

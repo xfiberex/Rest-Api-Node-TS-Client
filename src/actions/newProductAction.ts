@@ -14,7 +14,7 @@ export async function newProductAction({ request }: ActionFunctionArgs) {
 
     try {
         await addProduct(data);
-        return redirect("/");
+        return redirect("/?toast=created");
     } catch (err) {
         console.error("Error al crear producto:", err);
         return "Hubo un error al crear el producto";

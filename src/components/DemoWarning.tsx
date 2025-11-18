@@ -1,6 +1,6 @@
 export default function DemoWarning() {
     return (
-        <div className="bg-linear-to-r from-yellow-50 to-amber-50 border-l-4 border-yellow-400 p-4 mb-6 rounded-r-lg shadow-sm">
+        <div className="bg-linear-to-r from-yellow-50 to-amber-50 border-l-4 border-yellow-400 p-4 mb-6 rounded-r-lg shadow-sm animate-fade-in">
             <div className="flex items-start">
                 <div className="shrink-0">
                     <svg

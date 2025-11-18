@@ -3,6 +3,7 @@
 Aplicación web frontend moderna desarrollada con React 19, TypeScript, Vite y TailwindCSS para la gestión de inventario de productos. Implementa React Router v7 con loaders y actions para una arquitectura de datos eficiente.
 
 **🌐 Despliegue**: La aplicación está desplegada en [Vercel](https://vercel.com/) y se conecta al servidor API en [Render](https://render.com/)
+**🎨 Diseño**: Fue mejorado utilizando Agentes IA de GitHub Copilot, solo con Claude Sonnet 4.5.
 
 ## 🚀 Características
 
@@ -17,6 +18,9 @@ Aplicación web frontend moderna desarrollada con React 19, TypeScript, Vite y T
 - ✅ **ESLint** para calidad de código
 - ✅ **Diseño responsive** y UI intuitiva
 - ✅ **Advertencia de demo** con información sobre limpieza de datos
+- ✅ **Animaciones de carga** y estados de loading
+- ✅ **Notificaciones toast** para feedback visual
+- ✅ **Skeleton loaders** para mejor UX
 
 ## 📋 Requisitos Previos
 
@@ -81,6 +85,11 @@ npm run lint
 ### Características de UX
 
 - **Advertencia de Demo**: Banner informativo sobre limpieza automática de datos
+- **Spinner de Carga Global**: Loader instantáneo durante carga inicial y recargas
+- **Skeleton Loaders**: Placeholders animados mientras cargan los datos
+- **Loading States**: Spinners en botones durante operaciones
+- **Notificaciones Toast**: Feedback visual de éxito/error en acciones
+- **Animaciones Suaves**: Transiciones fade-in, slide-in y scale en elementos
 - Navegación fluida con React Router
 - Validación de formularios en tiempo real
 - Mensajes de error informativos
@@ -102,11 +111,21 @@ Client/
 │   ├── components/    # Componentes reutilizables
 │   │   ├── DemoWarning.tsx
 │   │   ├── ErrorMessage.tsx
+│   │   ├── GlobalLoadingIndicator.tsx
+│   │   ├── GlobalPageLoader.tsx
+│   │   ├── LoadingSpinner.tsx
 │   │   ├── ProductDetails.tsx
-│   │   └── ProductForm.tsx
+│   │   ├── ProductForm.tsx
+│   │   ├── SkeletonLoader.tsx
+│   │   └── Toast.tsx
+│   ├── context/       # Contextos de React
+│   │   ├── ToastContext.tsx
+│   │   └── ToastContextDefinition.ts
 │   ├── helpers/       # Funciones de utilidad
 │   │   ├── formatCurrency.ts
 │   │   └── toBoolean.ts
+│   ├── hooks/         # Custom hooks
+│   │   └── useToast.ts
 │   ├── layouts/       # Layouts de la aplicación
 │   │   └── Layout.tsx
 │   ├── loaders/       # Loaders de React Router (GET)
@@ -189,9 +208,13 @@ El proyecto utiliza TailwindCSS v4 con el plugin de Vite para:
 
 ### Componentes UI
 
+- **Loaders y Spinners**: Indicadores de carga en múltiples tamaños
+- **Skeleton Loaders**: Para tablas y formularios
+- **Toast Notifications**: Sistema de notificaciones contextual
+- **Global Page Loader**: Loader HTML/CSS + React en dos capas
 - Formularios con validación visual
-- Botones con estados hover y active
-- Tablas responsive
+- Botones con estados hover, active y loading
+- Tablas responsive con animaciones
 - Mensajes de error destacados
 - Indicadores de disponibilidad con colores
 
@@ -307,13 +330,18 @@ npx serve dist
 
 ## 🎯 Mejores Prácticas Implementadas
 
-- ✅ **Separación de responsabilidades**: Components, Services, Loaders, Actions
+- ✅ **Separación de responsabilidades**: Components, Services, Loaders, Actions, Context
 - ✅ **Tipado fuerte**: TypeScript en todo el proyecto
 - ✅ **Validación de datos**: Esquemas con Valibot
 - ✅ **Manejo de errores**: Try-catch y mensajes de error
 - ✅ **Código limpio**: ESLint y convenciones consistentes
-- ✅ **Componentización**: Componentes reutilizables
+- ✅ **Componentización**: Componentes reutilizables y modulares
 - ✅ **Performance**: Vite + SWC para builds rápidos
+- ✅ **UX avanzada**: Loading states, animaciones y feedback visual
+- ✅ **Context API**: Gestión de estado global para toasts
+- ✅ **Custom Hooks**: Lógica reutilizable encapsulada
+- ✅ **Carga optimizada**: Loader instantáneo con HTML/CSS puro
+- ✅ **Fuentes optimizadas**: Google Fonts (Inter) con preconnect
 
 ## 👤 Autor
 
@@ -337,6 +365,53 @@ Las contribuciones son bienvenidas. Por favor:
 
 Para reportar bugs o solicitar características, por favor abre un issue en el repositorio.
 
+## 🎨 Sistema de UX Avanzado
+
+### Loader de Carga Global en Dos Capas
+
+#### Capa 1: HTML/CSS Puro
+- Se muestra **instantáneamente** al cargar/recargar la página
+- No depende de JavaScript
+- Funciona incluso con throttling extremo
+- Diseño idéntico al loader de React
+
+#### Capa 2: React Component
+- Toma control cuando React se monta
+- Transición suave entre loaders
+- Se oculta cuando todo está cargado
+
+### Sistema de Notificaciones Toast
+
+- **Context API**: Gestión global de notificaciones
+- **Auto-cierre**: Configurable con duración personalizada
+- **Tipos**: Success, Error, Info
+- **Múltiples toasts**: Soporta stack de notificaciones
+- **Animaciones**: Entrada desde derecha, fade-out suave
+
+### Skeleton Loaders
+
+- **TableSkeleton**: Para lista de productos
+- **FormSkeleton**: Para formularios de edición
+- **Animación pulse**: Efecto de carga realista
+
+### Loading States
+
+- **Botones con spinner**: Durante operaciones async
+- **Campos deshabilitados**: Durante submit de formularios
+- **Indicador de disponibilidad**: Con spinner al actualizar
+- **Barra de progreso**: En header durante navegación
+
+### Animaciones CSS Personalizadas
+
+```css
+✅ fade-in - Aparición suave con desplazamiento
+✅ slide-in-right - Entrada desde la derecha
+✅ pulse-slow - Pulso lento para indicadores
+✅ Transiciones globales en elementos interactivos
+✅ Efecto active scale en botones
+✅ Scroll suave en toda la página
+```
+
 ## 🔗 Enlaces Relacionados
 
 - [Servidor API](../Server/README.md)
@@ -345,3 +420,4 @@ Para reportar bugs o solicitar características, por favor abre un issue en el r
 - [Vite Documentation](https://vitejs.dev/)
 - [TailwindCSS](https://tailwindcss.com/)
 - [Valibot](https://valibot.dev/)
+- [Google Fonts - Inter](https://fonts.google.com/specimen/Inter)
