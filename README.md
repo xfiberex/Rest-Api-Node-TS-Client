@@ -2,6 +2,8 @@
 
 Aplicación web frontend moderna desarrollada con React 19, TypeScript, Vite y TailwindCSS para la gestión de inventario de productos. Implementa React Router v7 con loaders y actions para una arquitectura de datos eficiente.
 
+**🌐 Despliegue**: La aplicación está desplegada en [Vercel](https://vercel.com/) y se conecta al servidor API en [Render](https://render.com/)
+
 ## 🚀 Características
 
 - ✅ **React 19** con las últimas características
@@ -230,25 +232,68 @@ const url = `${import.meta.env.VITE_API_URL}/api/products`;
 
 ## 🚀 Despliegue
 
-### Vercel (Recomendado)
+### Vercel (Producción)
 
-El proyecto incluye configuración para Vercel (`vercel.json`):
+La aplicación cliente está desplegada en [Vercel](https://vercel.com/) con las siguientes configuraciones:
+
+#### 1. Despliegue desde GitHub
+
+1. Importar el repositorio en Vercel
+2. Seleccionar el directorio `Client` como root
+3. Vercel detectará automáticamente Vite
+
+#### 2. Variables de Entorno en Vercel
+
+```env
+VITE_API_URL=<URL_del_servidor_en_Render>
+```
+
+Ejemplo:
+```env
+VITE_API_URL=https://tu-api.onrender.com
+```
+
+#### 3. Configuración de Build
+
+- **Framework Preset**: Vite
+- **Build Command**: `npm run build`
+- **Output Directory**: `dist`
+- **Install Command**: `npm install`
+
+#### 4. Características de Vercel
+
+- ✅ Despliegue automático desde GitHub
+- ✅ SSL/HTTPS gratuito
+- ✅ CDN global para mejor rendimiento
+- ✅ Preview deployments para cada PR
+- ✅ Rollbacks instantáneos
+- ✅ Analytics integrados
+
+### Despliegue Manual con Vercel CLI
 
 ```bash
 # Instalar Vercel CLI
 npm i -g vercel
 
+# Iniciar sesión
+vercel login
+
 # Desplegar
 vercel
+
+# Desplegar a producción
+vercel --prod
 ```
 
-### Build Manual
+### Build Manual Local
 
 ```bash
 # Construir para producción
 npm run build
 
 # Los archivos estáticos estarán en dist/
+# Puedes servirlos con cualquier servidor estático
+npx serve dist
 ```
 
 ## 🔒 Variables de Entorno
