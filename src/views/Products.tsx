@@ -1,5 +1,6 @@
 import { Link, useLoaderData } from "react-router-dom"
 import ProductDetails from "../components/ProductDetails";
+import DemoWarning from "../components/DemoWarning";
 import type { Product } from "../types";
 
 export default function Products() {
@@ -7,6 +8,8 @@ export default function Products() {
 
     return (
         <>
+            <DemoWarning />
+            
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
                 <div>
                     <h2 className="text-3xl font-black text-slate-800">

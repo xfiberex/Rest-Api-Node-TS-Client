@@ -16,6 +16,7 @@ Aplicación web frontend moderna desarrollada con React 19, TypeScript, Vite y T
 - ✅ **SWC** para compilación rápida
 - ✅ **ESLint** para calidad de código
 - ✅ **Diseño responsive** y UI intuitiva
+- ✅ **Advertencia de demo** con información sobre limpieza de datos
 
 ## 📋 Requisitos Previos
 
@@ -79,6 +80,7 @@ npm run lint
 
 ### Características de UX
 
+- **Advertencia de Demo**: Banner informativo sobre limpieza automática de datos
 - Navegación fluida con React Router
 - Validación de formularios en tiempo real
 - Mensajes de error informativos
@@ -98,6 +100,7 @@ Client/
 │   │   ├── newProductAction.ts
 │   │   └── updateAvailabilityAction.ts
 │   ├── components/    # Componentes reutilizables
+│   │   ├── DemoWarning.tsx
 │   │   ├── ErrorMessage.tsx
 │   │   ├── ProductDetails.tsx
 │   │   └── ProductForm.tsx
