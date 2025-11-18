@@ -215,6 +215,115 @@ npm run lint
 - 📦 Optimización de assets
 - 🎯 Tree shaking
 
+## Despliegue en Vercel
+
+### 1. Preparar el Proyecto
+
+Asegúrate de tener el archivo `vercel.json` en la raíz del proyecto Client:
+
+```json
+{
+    "routes": [
+        {
+            "src": "/[^.]+",
+            "dest": "/",
+            "status": 200
+        }
+    ]
+}
+```
+
+Este archivo es necesario para que React Router funcione correctamente en Vercel.
+
+### 2. Desplegar desde GitHub
+
+#### Opción A: Desde la Web de Vercel
+
+1. Ve a [Vercel](https://vercel.com) e inicia sesión con GitHub
+2. Click en **"Add New"** → **"Project"**
+3. Importa tu repositorio de GitHub
+4. Configura el proyecto:
+   - **Framework Preset**: Vite
+   - **Root Directory**: `Client` (si está en una carpeta)
+   - **Build Command**: `npm run build` (por defecto)
+   - **Output Directory**: `dist` (por defecto)
+   - **Install Command**: `npm install` (por defecto)
+
+#### Opción B: Desde la Terminal
+
+```bash
+# Instalar Vercel CLI
+npm i -g vercel
+
+# Navegar a la carpeta Client
+cd Client
+
+# Desplegar
+vercel
+
+# Para producción
+vercel --prod
+```
+
+### 3. Configurar Variables de Entorno
+
+En el dashboard de Vercel, ve a **Settings** → **Environment Variables** y agrega:
+
+```
+VITE_API_URL=https://tu-api.onrender.com
+```
+
+> **Importante**: Reemplaza `https://tu-api.onrender.com` con la URL de tu API desplegada en Render.
+
+### 4. Verificar el Despliegue
+
+1. Una vez desplegado, Vercel te dará una URL como: `https://tu-app.vercel.app`
+2. Prueba la aplicación abriendo la URL en tu navegador
+3. Verifica que las operaciones CRUD funcionen correctamente
+
+### 5. Configurar Dominio Personalizado (Opcional)
+
+1. En el dashboard de Vercel, ve a **Settings** → **Domains**
+2. Agrega tu dominio personalizado
+3. Sigue las instrucciones para configurar los DNS
+
+### 6. Auto-Deploy
+
+Vercel automáticamente redesplega tu aplicación cuando:
+- Haces push a la rama `main` (producción)
+- Haces push a cualquier otra rama (preview)
+
+### Comandos Útiles de Vercel CLI
+
+```bash
+vercel                  # Desplegar a preview
+vercel --prod          # Desplegar a producción
+vercel env ls          # Listar variables de entorno
+vercel env add         # Agregar variable de entorno
+vercel logs            # Ver logs de la aplicación
+vercel domains         # Gestionar dominios
+```
+
+### Notas Importantes
+
+- ✅ **Plan Gratuito**: Vercel ofrece despliegues ilimitados en el plan gratuito
+- 🔄 **Hot Reload**: Los cambios se despliegan automáticamente
+- 🌐 **HTTPS**: Vercel proporciona HTTPS automáticamente
+- 📱 **CDN Global**: Tu aplicación se sirve desde el CDN de Vercel
+
+### Solución de Problemas
+
+**Problema: Las rutas no funcionan después del despliegue**
+- Solución: Asegúrate de tener el archivo `vercel.json` configurado correctamente
+
+**Problema: La API no responde**
+- Verifica que `VITE_API_URL` esté configurada correctamente
+- Asegúrate de que CORS esté habilitado en tu API de Render
+
+**Problema: Variables de entorno no se cargan**
+- Las variables deben tener el prefijo `VITE_`
+- Después de agregar variables, necesitas redesplegar
+
 ## 🤝 Contribución
 
 Las contribuciones son bienvenidas. Por favor:
