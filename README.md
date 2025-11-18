@@ -225,13 +225,13 @@ Las contribuciones son bienvenidas. Por favor:
 4. Push a la rama (`git push origin feature/AmazingFeature`)
 5. Abre un Pull Request
 
-## 📄 Licencia
+## Licencia
 
-Este proyecto es de código abierto.
+Este proyecto está bajo la Licencia MIT. Ver el archivo [LICENSE](LICENSE) para más detalles.
 
-## 👨‍💻 Autor
+## Autor
 
-**Ricky Jimenez**
+**Ricky Angel Jiménez Bueno**
 
 ## 🔗 Enlaces
 
